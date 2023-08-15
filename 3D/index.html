@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interação 3D com JavaScript</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+        }
+        #interaction-buttons {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        #result {
+            position: absolute;
+            top: 60px;
+            left: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <div id="interaction-buttons">
+        <button id="rotateButton">Girar Cubo</button>
+    </div>
+    <p id="result"></p>
+    <script>
+        // Configuração básica do Three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Criação de um cubo
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        // Posição da câmera
+        camera.position.z = 5;
+
+        // Função de animação
+        const animate = () => {
+            requestAnimationFrame(animate);
+
+            // Rotação do cubo
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+
+        // Interatividade
+        const rotateButton = document.getElementById('rotateButton');
+        const resultText = document.getElementById('result');
+
+        rotateButton.addEventListener('click', () => {
+            cube.rotation.x += 0.2;
+            cube.rotation.y += 0.2;
+            resultText.textContent = 'Cubo girado!';
+        });
+    </script>
+</body>
+</html>

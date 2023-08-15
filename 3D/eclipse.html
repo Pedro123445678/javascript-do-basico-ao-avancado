@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistema de Eclipse com Three.js</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Configuração básica do Three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(80, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Criação do sol
+        const sunGeometry = new THREE.SphereGeometry(3, 32, 32);
+        const sunMaterial = new THREE.MeshBasicMaterial({ color: 0xffd700 });
+        const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+        scene.add(sun);
+
+        // Criação do planeta
+        const planetGeometry = new THREE.SphereGeometry(1, 32, 32);
+        const planetMaterial = new THREE.MeshBasicMaterial({ color: 0x4286f4 });
+        const planet = new THREE.Mesh(planetGeometry, planetMaterial);
+        planet.position.x = 8;
+        scene.add(planet);
+
+        // Posição da câmera
+        camera.position.z = 30;
+
+        // Ângulo de rotação do planeta
+        let planetRotation = 0;
+
+        // Função de animação
+        const animate = () => {
+            requestAnimationFrame(animate);
+
+            // Rotação do planeta em torno do sol
+            planetRotation += 0.005;
+            planet.position.x = 8 * Math.cos(planetRotation);
+            planet.position.z = 8 * Math.sin(planetRotation);
+
+            // Verifica se o planeta está alinhado com o sol (eclipse)
+            if (Math.abs(planet.position.x) < 0.1) {
+                planet.material.color.set(0x000000); // Simula o eclipse
+            } else {
+                planet.material.color.set(0x4286f4); // Restaura a cor normal do planeta
+            }
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    </script>
+</body>
+</html>
