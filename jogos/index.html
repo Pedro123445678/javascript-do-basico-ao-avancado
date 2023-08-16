@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Juego de Pique Esconde</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .game-container {
+            position: relative;
+            width: 500px;
+            height: 300px;
+            margin: 0 auto;
+        }
+        .character {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Juego de Pique Esconde</h1>
+    <div class="game-container">
+        <div class="character" id="character" onclick="foundCharacter()"></div>
+    </div>
+
+    <script>
+        const character = document.getElementById('character');
+        const gameContainer = document.querySelector('.game-container');
+        const maxWidth = gameContainer.clientWidth - character.clientWidth;
+        const maxHeight = gameContainer.clientHeight - character.clientHeight;
+
+        function randomPosition() {
+            const x = Math.floor(Math.random() * maxWidth);
+            const y = Math.floor(Math.random() * maxHeight);
+            return { x, y };
+        }
+
+        function placeCharacter() {
+            const position = randomPosition();
+            character.style.left = position.x + 'px';
+            character.style.top = position.y + 'px';
+        }
+
+        function foundCharacter() {
+            alert('¡Encontraste al personaje!');
+            placeCharacter();
+        }
+
+        placeCharacter();
+    </script>
+</body>
+</html>

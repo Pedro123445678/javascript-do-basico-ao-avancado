@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VarpoWave</title>
+<style>
+  body {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #ff5a5f;
+    padding: 20px;
+    text-align: center;
+  }
+  h1 {
+    margin: 0;
+    font-size: 36px;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  .wave {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background: #ff5a5f;
+    transform: rotate(180deg);
+  }
+  .wave::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color:#EE82EE ;
+    border-radius: 100% 100% 0 0;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>VarpoWave - Sua Jornada em Ondas Criativas</h1>
+  </header>
+  <div class="container">
+    <p>Bem-vindo à VarpoWave! Aqui, mergulhamos nas ondas da criatividade e inovação. Seja você um artista, um designer ou um entusiasta da tecnologia, nosso espaço é para todos aqueles que desejam explorar novas ideias e expressar-se de maneiras únicas.</p>
+    <p>Descubra nossos cursos, workshops e eventos para expandir seus horizontes criativos. Junte-se à nossa comunidade e compartilhe suas próprias experiências e criações.</p>
+    <p>Vamos juntos surfar na emocionante jornada da VarpoWave!</p>
+  </div>
+  <div class="wave"></div>
+</body>
+</html>

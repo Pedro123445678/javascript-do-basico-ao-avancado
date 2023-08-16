@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora Compleja</title>
+    <style>
+        #calculator {
+    width: 350px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #bd6363;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    background-color: #060101;
+    text-align: center;
+}
+
+#display {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+}
+
+button {
+    width: 60px;
+    height: 60px;
+    font-size: 1em;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #43515c;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:active {
+    background-color: #c6ddee;
+}
+
+button.operator {
+    background-color: #e74c3c;
+}
+
+button.operator:hover {
+    background-color: #c0392b;
+}
+
+button.operator:active {
+    background-color: #a5281a;
+}
+
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <input type="text" id="display" readonly>
+        <table>
+            <tr>
+                <td><button onclick="appendToDisplay('7')">7</button></td>
+                <td><button onclick="appendToDisplay('8')">8</button></td>
+                <td><button onclick="appendToDisplay('9')">9</button></td>
+                <td><button onclick="performOperation('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendToDisplay('4')">4</button></td>
+                <td><button onclick="appendToDisplay('5')">5</button></td>
+                <td><button onclick="appendToDisplay('6')">6</button></td>
+                <td><button onclick="performOperation('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendToDisplay('1')">1</button></td>
+                <td><button onclick="appendToDisplay('2')">2</button></td>
+                <td><button onclick="appendToDisplay('3')">3</button></td>
+                <td><button onclick="performOperation('*')">*</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendToDisplay('0')">0</button></td>
+                <td><button onclick="appendToDisplay('.')">.</button></td>
+                <td><button onclick="calculate()">=</button></td>
+                <td><button onclick="performOperation('/')">/</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="clearDisplay()">C</button></td>
+                <td><button onclick="backspace()">&lt;</button></td>
+                <td><button onclick="appendToDisplay('Math.sin')">sin</button></td>
+                <td><button onclick="appendToDisplay('Math.cos')">cos</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        let displayValue = '';
+
+        function appendToDisplay(value) {
+            displayValue += value;
+            document.getElementById('display').value = displayValue;
+        }
+
+        function performOperation(operator) {
+            appendToDisplay(operator);
+        }
+
+        function calculate() {
+            try {
+                displayValue = eval(displayValue);
+                document.getElementById('display').value = displayValue;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+
+        function clearDisplay() {
+            displayValue = '';
+            document.getElementById('display').value = displayValue;
+        }
+
+        function backspace() {
+            displayValue = displayValue.slice(0, -1);
+            document.getElementById('display').value = displayValue;
+        }
+    </script>
+</body>
+</html>
+
+</head>
+<body>
+    
+</body>
+</html>
