@@ -1,0 +1,19 @@
+@charset "UTF-8";
+div{
+    background-color: rgb(185, 49, 126);  
+   } 
+  body{
+  background-color: rgb(105, 51, 97);    
+  }
+  section.imagem > p{
+    display: inline-block;
+    padding: 5px;
+    background-color: rgba(10, 10, 10, 0.377);
+    text-shadow: 1px 1px 0px black;
+ }
+        section#imagem{
+background-image: url('../formas-3d-coloridas-no-estilo-vaporwave.jpg');
+background-position: right center;
+
+      }
+      
